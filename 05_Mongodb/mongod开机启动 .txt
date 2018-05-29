@@ -1,0 +1,35 @@
+ 将mongodb设置为开机启动
+      1. 新建文件夹db作为数据库数据存储了路径
+	 cd ~
+	 mkdir db
+      2. 设置mongod为开机启动
+         sudo vim /etc/rc.local 
+
+        添加如下一行到文件/etc.rc.local 的"exit 0"行之前：
+        sudo /opt/mongodb-linux-x86_64-ubuntu1604-3.4.10/bin/mongod --dbpath /home/tarena/db
+      3. 重启
+	reboot
+
+   
+ 验证：
+tarena@tedu:~$ mongo
+MongoDB shell version v3.4.10
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.4.10
+Server has startup warnings: 
+2017-11-14T15:51:04.763+0800 I STORAGE  [initandlisten] 
+2017-11-14T15:51:04.763+0800 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2017-11-14T15:51:04.764+0800 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2017-11-14T15:51:08.008+0800 I CONTROL  [initandlisten] 
+2017-11-14T15:51:08.009+0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-11-14T15:51:08.009+0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-11-14T15:51:08.009+0800 I CONTROL  [initandlisten] ** WARNING: You are running this process as the root user, which is not recommended.
+2017-11-14T15:51:08.009+0800 I CONTROL  [initandlisten] 
+2017-11-14T15:51:08.010+0800 I CONTROL  [initandlisten] 
+2017-11-14T15:51:08.010+0800 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/enabled is 'always'.
+2017-11-14T15:51:08.010+0800 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
+2017-11-14T15:51:08.010+0800 I CONTROL  [initandlisten] 
+2017-11-14T15:51:08.010+0800 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is 'always'.
+2017-11-14T15:51:08.010+0800 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
+2017-11-14T15:51:08.010+0800 I CONTROL  [initandlisten] 
+> 
